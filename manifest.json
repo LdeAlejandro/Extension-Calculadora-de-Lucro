@@ -1,0 +1,32 @@
+{
+  "manifest_version": 3,
+  "name": "Calculadora de Lucro",
+  "version": "1.0",
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "16x16.png",
+      "48": "64x64.png",
+      "128": "128x128.png"
+    }
+  },
+  "icons": {
+    "16": "16x16.png",
+    "48": "64x64.png",
+    "128": "128x128.png"
+  },
+  "content_scripts": [
+    {
+      "matches": ["*://*/*"],
+      "js": ["popup.js"]
+    }
+  ],
+  "permissions": [
+    "tabs",
+    "activeTab", 
+    "storage",
+     "<all_urls>",
+     "storage"
+
+  ]
+}

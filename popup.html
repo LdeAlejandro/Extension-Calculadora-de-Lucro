@@ -1,0 +1,278 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Calculadora de Lucro</title>
+
+    <style>
+        /* Overall styles for the scrollable div */
+        #scrollableDiv {
+            height: 600px;
+            width: 400px;
+            margin: 20px auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+        }
+
+        /* Styles for decimal input elements */
+        .decimal-input {
+            width: 80px;
+        }
+
+        /* Styles for the header */
+        h3 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        /* Styles for labels */
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        /* Styles for select dropdowns */
+        select {
+            width: 100%;
+            padding: 5px;
+            margin-bottom: 10px;
+        }
+
+        /* Styles for buttons */
+        button {
+            padding: 8px 16px;
+            margin-right: 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: #007bff;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        /* Additional button style for "Limpar" */
+        #limpar {
+            background-color: #dc3545;
+        }
+
+        /* Styles for option content divs */
+        .option-content {
+            display: none;
+            margin-top: 20px;
+        }
+
+        /* Display the selected option content div */
+        #scrollableDiv .option-content {
+            display: block;
+        }
+
+        /* Styles for heading h4 in option content */
+        .option-content h4 {
+            margin-bottom: 10px;
+        }
+
+        /* Styles for span elements in option content */
+        .option-content span {
+            font-weight: bold;
+        }
+
+        /* Styles for div elements in option content */
+        .option-content div {
+            margin-bottom: 10px;
+        }
+
+        /* Styles for input elements in option content */
+        .option-content input {
+            margin-bottom: 10px;
+        }
+    </style>
+
+</head>
+<body>
+  <div id="scrollableDiv">
+  <h3>Calculadora de Lucro</h3>
+  
+  <br>
+  <label for="custoBaseProduto">Custo:</label>
+  <input type="number" id="custoBaseProduto" name="custoBaseProduto" class ='decimal-input'>
+  <label for="transporte">Transporte:</label>
+  <input type="number" id="transporte" name="transporte" class ='decimal-input'>
+  <br><br>
+  <span id="custo">Custo:</span>
+  <br>
+  <button id="calcularButton">Calcular</button>
+  <button id="limpar">Limpar</button>
+</br></br>
+    </br>
+    <div>
+        
+    <select id="selectOption">
+        <option value="Option1">Todos</option>
+        <option value="Option2">Loja Integrada</option>
+        <option value="Option3">Americanas</option>
+        <option value="Option4">Mercado Livre</option>
+        <option value="Option5">Magalu</option>
+        <option value="Option6">Amazon</option>
+        <option value="Option7">Shopee</option>
+      </select> 
+    
+    </div>
+
+    <!-- Content for Option base-->
+    <div id="contentOption1" class="option-content">
+  <!-- Base -->
+    <span>Preço recomendado:</span>
+    <div id="preco_recomendado_de_venta"></div>
+    <span>Lucro ideal:</span> <div id="lucroIdeal"></div>
+</div>
+    
+<!-- Content for Option Loja Integrada -->
+      <div id="contentOption2" class="option-content">
+        
+      
+    <!-- Loja integrada Mercado Pago -->
+    <h4> Loja Integrada Mercado Pago </h4>
+     
+     <span>Preço recomendado:</span>
+  <div id="preco_recomendado_LojaIntegrada_MP"></div>
+    <span>Lucro Ideal:</span> <div id="lucroIdeal_LojaIntegrada_MP"></div>
+
+    <br>
+    <label for="preçoFinalLI">Preço Final:</label>
+    <input type="number" id="preçoFinalLI" name="preçoFinalLI" class ='decimal-input'>
+    </br>
+
+    <span>Lucro:</span> <div id="lucroLojaIntegrada_MP"></div>
+
+</div>
+
+<!-- Content for Option Americanas -->
+<div id="contentOption3" class="option-content">
+    
+    <!--Americanas -->
+    <h4> Americanas </h4>
+    <div>
+    <h4>Categoria: </h4>
+    <select id="categorySelectAmericanas">
+        <!-- Options will be generated dynamically -->
+      </select>
+    </div>
+     <span>Preço recomendado:</span>
+  <div id="preço_recomendado_Americanas"></div>
+    <span>Lucro Ideal:</span> <div id="lucroIdeal_Americanas"></div>
+
+    <br>
+    <label for="preçoFinalAmericanas">Preço Final:</label>
+    <input type="number" id="preçoFinalAmericanas" name="preçoFinalAmericanas" class ='decimal-input'>
+    </br>
+    <span>Lucro:</span> <div id="lucroAmericanas"></div>
+</div>
+
+  <!-- Content for Option Mercadolivre -->
+  <div id="contentOption4" class="option-content">
+
+    <!--MercadoLivre -->
+    <h4> Mercado Livre </h4>
+    <br>
+     <span>Preço recomendado Premium:</span>
+  <div id="preço_recomendado_MercadoLivrePM"></div>
+  <span>Lucro Ideal PM:</span> <div id="lucroIdeal_MercadoLivrePM"></div>
+  </br>
+  
+  <span>Preço recomendado Classica:</span>
+  <div id="preço_recomendado_MercadoLivreC"></div>
+    <span>Lucro Ideal Cl:</span> <div id="lucroIdeal_MercadoLivreC"></div>
+
+    <br>
+    <br>
+    <label for="preçoFinalMercadoLivrePM">Preço Final Premium:</label>
+    <input type="number" id="preçoFinalMercadoLivrePM" name="preçoFinalMercadoLivrePM" class ='decimal-input'>
+    <br>
+    <span>Lucro Premium:</span> <div id="lucroMercadoLivrePM"></div>
+  </br>
+  </br>
+    <label for="preçoFinalMercadoLivreC">Preço Final Classica:</label>
+    <input type="number" id="preçoFinalMercadoLivreC" name="preçoFinalMercadoLivreC" class ='decimal-input'>
+    <br>
+    <span>Lucro classica:</span> <div id="lucroMercadoLivreC"></div>
+</br>
+  </br>
+    
+
+</div>
+
+<!-- Content for Option Magalu -->
+<div id="contentOption5" class="option-content">
+  <h4> Magalu</h4>
+  <span>Preço recomendado:</span>
+  <div id="preço_recomendado_Magalu"></div>
+    <span>Lucro Ideal:</span> <div id="lucroIdeal_Magalu"></div>
+
+    <br>
+    <label for="preçoFinaMagalu">Preço Final:</label>
+    <input type="number" id="preçoFinaMagalu" name="preçoFinaMagalu" class ='decimal-input'>
+    </br>
+    <span>Lucro:</span> <div id="lucroMagalu"></div>
+</div>
+
+<!-- Content for Option Amazon -->
+<div id="contentOption6" class="option-content">
+  <h4> Amazon </h4>
+  <div>
+  <h4>Categoria: </h4>
+  <select id="categorySelectAmazon">
+      <!-- Options will be generated dynamically -->
+    </select>
+  </div>
+   <span>Preço recomendado:</span>
+<div id="preço_recomendado_Amazon"></div>
+  <span>Lucro Ideal:</span> <div id="lucroIdeal_Amazon"></div>
+
+  <br>
+  <label for="preçoFinalAmazon">Preço Final:</label>
+  <input type="number" id="preçoFinalAmazon" name="preçoFinalAmazon" class ='decimal-input'>
+  </br>
+  <span>Lucro:</span> <div id="lucroAmazon"></div>
+</div>
+
+
+<!-- Content for Option shopee -->
+<div id="contentOption7" class="option-content">
+  <h4> Shopee</h4>
+  <br>
+  <span>Preço recomendado Padrão:</span>
+  <div id="preço_recomendado_ShopeeP"></div>
+  <span>Lucro IdealPadrão:</span> <div id="lucroIdeal_ShopeeP"></div>
+</br>
+  <span>Preço recomendado Frete Gratis:</span>
+  <div id="preço_recomendado_ShopeeF"></div>
+    <span>Lucro Ideal Cl:</span> <div id="lucroIdeal_ShopeeF"></div>
+
+    <br>
+    <br>
+    
+    <label for="preçoFinalShopeeP">Preço Final Padrão 14%:</label>
+    <input type="number" id="preçoFinalShopeeP" name="preçoFinalShopeeP" class ='decimal-input'>
+    <br>
+    <span>Lucro Padrão 14%:</span> <div id="lucroShopeeP"></div>
+  </br>
+  </br>
+    <label for="preçoFinalShopeeF">Preço Final Frete Gratis 20%:</label>
+    <input type="number" id="preçoFinalShopeeF" name="preçoFinalShopeeF" class ='decimal-input'>
+    <br>
+    <span>Lucro Gratis 20%:</span> <div id="lucroShopeeF"></div>
+  </br>
+  </br>
+    
+    
+
+</div>
+
+</div>
+
+
+
+  
+</body>
+<script src="popup.js"></script>
+</html>
