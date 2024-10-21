@@ -573,44 +573,5 @@ document.addEventListener("DOMContentLoaded", function () {
 
       }
     });
-
-    //ignore
-
-    document.addEventListener('keydown', function (event) {
-      // Check if Ctrl (Control), Alt, Shift, and 'I' keys are pressed
-      if (event.ctrlKey && event.altKey && event.key === 'i') {
-          // Retrieve the dataToStore from Chrome storage
-          chrome.storage.local.get("dataToStore", function (data) {
-              if (chrome.runtime.lastError) {
-                  console.error(chrome.runtime.lastError);
-              } else {
-                  const dataToStore = data.dataToStore;
-                  console.log("Retrieved dataToStore:", dataToStore);
-
-                  // You can use the dataToStore value here as needed
-              }
-          });
-          console.log('Ctrl + Alt + Shift + I pressed!');
-          // Add your code to execute when the keys are pressed here
-      }
-      else if (event.ctrlKey && event.altKey && event.key === 'l')
-      {
-             // Clear all data stored in chrome.storage.local
-            chrome.storage.local.clear(function() {
-            if (chrome.runtime.lastError) 
-            {
-              console.error(chrome.runtime.lastError);
-            } 
-            else
-             {
-              console.log("chrome.storage.local data cleared successfully.");
-             }
-        });
-      }
-
- 
-  });
-  //ignore
-
   }
 });
